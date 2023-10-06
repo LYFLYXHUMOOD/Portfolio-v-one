@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loading Screen</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Amiri', sans-serif;
+      overflow: hidden;
+    }
+
+    .background-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      opacity: 0;
+      animation: fadeInBackground 2s forwards;
+    }
+
+    @keyframes fadeInBackground {
+      from {
+        background-image: radial-gradient(circle, rgba(224, 172, 49, 0.8) 0%, transparent 70%);
+        opacity: 0;
+      }
+      to {
+        background-image: url("https://cdn.discordapp.com/attachments/1049016109954777170/1135331310366376086/png_loading_screen.png"), radial-gradient(circle, rgba(224, 172, 49, 0.8) 0%, transparent 70%);
+        opacity: 1;
+      }
+    }
+
+    .loading-screen {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      animation: fadeInContent 1s forwards 2s, fadeOutContent 1s forwards 7s, fadeOutBackground 1s forwards 8s;
+    }
+
+    @keyframes fadeInContent {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOutContent {
+      to {
+        opacity: 0;
+      }
+    }
+
+    .name-animation {
+      font-size: 48px;
+      font-weight: bold;
+      color: #e0ac31;
+      direction: rtl;
+      animation: neonGlow 2s ease-in-out infinite alternate, shakeText 0.2s 1.5s infinite alternate;
+    }
+
+    .english-text {
+      font-size: 24px;
+      font-weight: bold;
+      color: #e0ac31;
+      text-align: center;
+      margin-top: 10px;
+      animation: neonGlow 2s ease-in-out infinite alternate, shakeText 0.2s 1.5s infinite alternate;
+    }
+
+    .subtitle {
+      font-size: 20px;
+      color: #e0ac31;
+      text-align: center;
+      margin-top: 10px;
+      animation: neonGlow 2s ease-in-out infinite alternate;
+    }
+
+    .logo-animation {
+      width: 300px;
+      height: 300px;
+      margin-top: 20px;
+      opacity: 0;
+      animation: fadeInLogo 1s forwards 2s, rotate360 4s linear infinite 2s, fadeOutLogo 1s forwards 7s;
+    }
+
+    @keyframes fadeInLogo {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOutLogo {
+      to {
+        opacity: 0;
+      }
+    }
+
+    .background-particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .particle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: rgba(224, 172, 49, 0.8);
+      border-radius: 50%;
+      animation: moveParticle 4s infinite linear, fadeOut 4s infinite;
+      opacity: 0.6;
+    }
+
+    .footer {
+      font-size: 14px;
+      color: #e0ac31;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .footer a {
+      color: #e0ac31;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes neonGlow {
+      from {
+        text-shadow: 0 0 10px #e0ac31, 0 0 20px #e0ac31, 0 0 30px #e0ac31, 0 0 40px #e0ac31;
+      }
+      to {
+        text-shadow: 0 0 20px #e0ac31, 0 0 40px #e0ac31, 0 0 60px #e0ac31, 0 0 80px #e0ac31;
+      }
+    }
+
+    @keyframes shakeText {
+      to {
+        transform: translateX(2px);
+      }
+    }
+
+    @keyframes rotate360 {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes moveParticle {
+      from {
+        transform: translate(0, 0);
+      }
+      to {
+        transform: translate(calc(100vw - 20px), calc(100vh - 20px));
+      }
+    }
+
+    @keyframes fadeOut {
+      from {
+        opacity: 0.8;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeOutBackground {
+      from {
+        opacity: 1;
+      }
+      to {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="background-animation"></div>
+  <div class="loading-screen">
+    <div class="name-animation" id="nameAnimation">ملف حمود الشخصي</div>
+    <div class="english-text">Humood's Portfolio</div>
+    <img class="logo-animation" src="https://cdn.discordapp.com/attachments/1049016109954777170/1159974562562314311/FINAL-PRODUCT-FINAL.gif?ex=6532f97f&is=6520847f&hm=b7cbb4764b029d1c1ba1ac488118a2a3cfe4c853e0d4c76b537cba70ecc1c17a&" alt="Logo">
+  </div>
+  <div class="background-particles">
+    <div class="particle" style="top: 30vh; left: 50%;"></div>
+    <div class="particle" style="top: 60vh; left: 20%;"></div>
+    <div class="particle" style="top: 50vh; left: 70%;"></div>
+    <div class="particle" style="top: 10vh; left: 40%;"></div>
+    <div class="particle" style="top: 80vh; left: 60%;"></div>
+    <!-- Add more particles as needed -->
+  </div>
+
+  <script>
+    window.addEventListener("load", function() {
+      const loadingScreen = document.querySelector(".loading-screen");
+      const backgroundAnimation = document.querySelector(".background-animation");
+
+      setTimeout(function() {
+        loadingScreen.style.animation = "fadeOutContent 1s forwards";
+      }, 7000); // The text and logo will disappear after 7 seconds
+
+      setTimeout(function() {
+        backgroundAnimation.style.animation = "fadeOutBackground 1s forwards";
+      }, 8000); // The background will fade out after 8 seconds
+
+      setTimeout(function() {
+        window.location.href = "home.html"; // Replace "index.html" with the actual homepage URL
+      }, 10000); // The loading screen will disappear after 10 seconds, adjust as needed
+    });
+  </script>
+</body>
+</html>
